@@ -51,11 +51,13 @@ Für lokale Entwicklung ohne Container:
 
 ```bash
 cp .env.example .env
-# JWT_SECRET, POSTGRES_PASSWORD und ADMIN_PASSWORD in .env unbedingt ändern
+# POSTGRES_PASSWORD, DATABASE_URL, JWT_SECRET, ADMIN_EMAIL und ADMIN_PASSWORD setzen
 docker compose up --build
 ```
 
-Danach ist die Anwendung unter <http://localhost:8080> erreichbar. Beim ersten Start werden Migration und idempotenter Seed automatisch ausgeführt. Der Seed-Administrator verwendet `ADMIN_EMAIL` und `ADMIN_PASSWORD` aus `.env`.
+Die leeren Secret-Felder in `.env.example` sind Absicht: Verwende lokal erzeugte Zufallswerte und committe `.env` niemals. `DATABASE_URL` muss Benutzer, Passwort, Host, Port und Datenbank des Compose-Datenbankdienstes enthalten.
+
+Danach ist die Anwendung unter <http://localhost:8080> erreichbar. Beim ersten Start werden Migration und idempotenter Seed automatisch ausgeführt. Der Seed-Administrator verwendet `ADMIN_EMAIL` und `ADMIN_PASSWORD` aus `.env`; das Passwort muss mindestens 12 Zeichen lang sein.
 
 Status prüfen:
 

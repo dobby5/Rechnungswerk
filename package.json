@@ -1,0 +1,16 @@
+{
+  "name": "rechnungswerk",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@11.19.0",
+  "engines": { "node": ">=24.0.0" },
+  "scripts": {
+    "build": "pnpm -r --sort build",
+    "dev": "pnpm --parallel --filter @rechnungswerk/api --filter @rechnungswerk/web dev",
+    "lint": "pnpm -r lint",
+    "test": "pnpm --filter @rechnungswerk/shared build && pnpm -r test",
+    "typecheck": "pnpm --filter @rechnungswerk/shared build && pnpm -r typecheck",
+    "db:migrate": "pnpm --filter @rechnungswerk/api migration:run",
+    "db:seed": "pnpm --filter @rechnungswerk/api seed"
+  }
+}
