@@ -31,6 +31,17 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
-      - run: cp .env.example .env
+      - name: Create ephemeral CI environment
+        shell: bash
+        run: |
+          cp .env.example .env
+          db_password="$(openssl rand -hex 24)"
+          {
+            echo "POSTGRES_PASSWORD=${db_password}"
+            echo "DATABASE_URL=postgresql://rechnungswerk:${db_password}@db:5432/rechnungswerk"
+            echo "JWT_SECRET=$(openssl rand -hex 32)"
+            echo "ADMIN_EMAIL=ci-admin@example.invalid"
+            echo "ADMIN_PASSWORD=$(openssl rand -base64 24)"
+          } >> .env
       - run: docker compose config --quiet
       - run: docker compose build
