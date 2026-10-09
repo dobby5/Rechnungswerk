@@ -14,10 +14,10 @@
     "@mdi/font": "^7.4.47",
     "@rechnungswerk/shared": "workspace:*",
     "axios": "^1.11.0",
-    "pinia": "^3.0.3",
-    "vue": "^3.5.39",
+    "pinia": "^4.0.3",
+    "vue": "^3.5.43",
     "vue-router": "^5.1.0",
-    "vuetify": "^4.1.7"
+    "vuetify": "^4.2.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
